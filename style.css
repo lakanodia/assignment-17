@@ -1,0 +1,120 @@
+.Post-main-block{
+    max-width: 1100px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 25px auto;
+    
+    /* background-color: rgb(35, 125, 111);
+    margin-bottom: 20px;
+    padding: 15px; */
+}
+
+.post-div{
+    max-width: 250px;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: black;
+    background-color: rgb(172, 194, 174);
+    border-radius: 7px;
+    box-shadow: 5px 5px 10px grey;
+    margin-bottom: 20px;
+}
+
+.overlay{
+    position: fixed;
+    top: 5%;
+    left: 0;
+    right: 0;
+    max-width: 600px;
+    width: 100%;
+    height: 300px;
+    background-color: rgb(234, 242, 237);
+    border-radius: 7px;
+    box-shadow: 5px 5px 10px rgb(142, 170, 145);
+    margin: 0 auto;
+    display: none;
+}
+.overlay.active{
+    display: block;
+}
+.close{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    cursor: pointer;
+}
+.content{
+    color: rgb(33, 62, 46);
+}
+.title{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+.description{
+    text-align: center;
+    font-size: 15px;
+}
+.deleteButton{
+    border: none;
+    border-radius: 7px;
+}
+.add-post{
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    font-size:50px;
+    color: rgb(97, 91, 219);
+    cursor: pointer;
+}
+.addPostOverlay{
+    position: fixed;
+    top: 5%;
+    left: 0;
+    right: 0;
+    max-width: 600px;
+    width: 100%;
+    height: 500px;
+    background-color: rgb(233, 239, 236);
+    border-radius: 7px;
+    box-shadow: 5px 5px 10px rgb(142, 170, 145);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    display: none;
+}
+.addPostOverlay.act{
+    display: block;
+}
+.addPostForm{
+    margin-top: 20px;
+}
+.close-post{
+    max-width: 50px;
+    width: 100%;
+    height: 30px;
+    background-color: aquamarine;
+    position: absolute;
+    bottom: 3%;
+    right: 30%;
+    cursor: pointer;
+}
+.save-post{
+    max-width: 140px;
+    width: 100%;
+    height: 30px;
+    background-color: aquamarine;
+    position: absolute;
+    bottom: 3%;
+    right: 3%;
+    cursor: pointer;
+}
