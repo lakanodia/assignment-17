@@ -7,6 +7,8 @@ let addPost = document.getElementById('add-post-icon');
 let addPostOverlay = document.getElementById('addPostOverlay');
 let addPostForm = document.getElementById('addPostForm');
 let addFormDiv = document.getElementById('addFormDiv');
+let InputElement = document.querySelector('.title-input');
+let descrInput = document.querySelector('.descr-input');
 
 let closeForm = document.getElementById('close-post');
 let saveForm = document.getElementById('save-post');
@@ -101,18 +103,19 @@ function renderOverlay(item){
     content.appendChild(title);
     content.appendChild(description);
 }
-closeIcon.addEventListener('click' , function(){
-    overlay.classList.remove('active');
-    content.innerHTML = ' ';
-})
+closeIcon.addEventListener('click', closeFormoverlay);
 
 addPost.addEventListener('click', function(){
-    addPostOverlay.classList.add('act');
+    addPostOverlay.classList.add('active');
+    InputElement.value = '';
+    descrInput.value = '';
 });
 
 function closeFormoverlay(event){
     event.stopPropagation();
-    addPostOverlay.classList.remove('act');
+    let parentValue = event.target.parentElement;
+    let grandParent = parentValue.parentElement;
+    grandParent.classList.remove('active');
 }
 
 addPostForm.addEventListener('submit', function(event){
@@ -121,7 +124,7 @@ addPostForm.addEventListener('submit', function(event){
         title: event.target[0].value,
         description: event.target[1].value
     }
-
+  
     fetch('https://jsonplaceholder.typicode.com/posts',{
         method: 'POST',
         body: JSON.stringify(inputvalue),
@@ -130,37 +133,17 @@ addPostForm.addEventListener('submit', function(event){
         },
     })
         .then((response) => response.json())
-        .then((json) => console.log(json));
-            addPostOverlay.classList.remove('act');
-            console.log(inputvalue);
+        .then((post) => afterPostSave(post));
     })
 
-closeForm.addEventListener('click',closeFormoverlay);
-closeFormIcon.addEventListener('click',closeFormoverlay);
-saveForm.addEventListener('click', addNewPost);
 
-function addNewPost(){
-    addFormDiv.innerHTML = ' ';
-    let descrInput = document.querySelector('.descr-input');
-    let InputElement = document.querySelector('.title-input');
-    let inputvalue = InputElement.value;
-    let inputDescValue = descrInput.value;
-    let h2TitleTag = document.createElement('h2');
-    h2TitleTag.textContent = inputvalue;
-    let pDescrTag = document.createElement('p');
-    pDescrTag.textContent = inputDescValue;
-    let deleteButtonTag = document.createElement('button');
-    deleteButtonTag.classList.add('deleteButton');
-    deleteButtonTag.textContent = 'Delete Post';
-    deleteButtonTag.addEventListener('click', function(){
-        addFormDiv.remove();
-    })
-    addFormDiv.appendChild(h2TitleTag);
-    addFormDiv.appendChild(pDescrTag);
-    addFormDiv.appendChild(deleteButtonTag);
-    mainPost.appendChild(addFormDiv);
-    addFormDiv.classList.add('activeform');
+function afterPostSave(post){
+    renderPost(post);
+    addPostOverlay.classList.remove('active');
 }
+
+closeForm.addEventListener('click', closeFormoverlay);
+closeFormIcon.addEventListener('click', closeFormoverlay);
 
 
 

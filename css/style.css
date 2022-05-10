@@ -10,10 +10,6 @@ body{
     justify-content: space-between;
     justify-content: center;
     margin: 25px auto;
-    
-    /* background-color: rgb(35, 125, 111);
-    margin-bottom: 20px;
-    padding: 15px; */
 }
 
 .post-div{
@@ -53,9 +49,7 @@ body{
     margin: 0 auto;
     display: none;
 }
-.overlay.active{
-    display: block;
-}
+
 .close{
     position: absolute;
     top: 3%;
@@ -105,9 +99,7 @@ body{
     flex-direction: column;
     display: none;
 }
-.addPostOverlay.act{
-    display: block;
-}
+
 .addPostForm{
     margin-top: 20px;
 }
@@ -169,7 +161,7 @@ body{
     color: aliceblue;
     font-weight: 900;
 }
-.addFormDiv.activeform{
+.active{
     display: block;
 }
 .deleteButton:hover {
