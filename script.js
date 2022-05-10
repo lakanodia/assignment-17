@@ -3,8 +3,14 @@ let mainPost = document.getElementById('main-block');
 let overlay = document.getElementById('overlay');
 let content = document.getElementById('content');
 let closeIcon = document.getElementById('close');
-let addPost = document.getElementById('add-post');
+let addPost = document.getElementById('add-post-icon');
 let addPostOverlay = document.getElementById('addPostOverlay');
+let addPostForm = document.getElementById('addPostForm');
+let addFormDiv = document.getElementById('addFormDiv');
+
+let closeForm = document.getElementById('close-post');
+let saveForm = document.getElementById('save-post');
+let closeFormIcon = document.getElementById('close-icon');
 
 
 // https://jsonplaceholder.typicode.com/posts
@@ -21,7 +27,6 @@ function ajax(url, callback){
 let urlPosts = 'https://jsonplaceholder.typicode.com/posts';
 
 ajax(urlPosts, renderPostElements);
-
 
 function renderPostElements(posts){
     posts.forEach(post => {
@@ -68,8 +73,7 @@ function renderPost(post){
     h3Tag.addEventListener('click', onTextClick)
   
     h2Tag.addEventListener('click', onTextClick)
-
-    
+ 
     function onTextClick(event) {
         event.stopPropagation();
         content.innerHTML = ' ';
@@ -85,7 +89,6 @@ function openOverlay(id){
         renderOverlay(data);
     });
 }
-
 function renderOverlay(item){
     let title = document.createElement('h2');
     title.classList.add('title');
@@ -98,16 +101,70 @@ function renderOverlay(item){
     content.appendChild(title);
     content.appendChild(description);
 }
-
 closeIcon.addEventListener('click' , function(){
     overlay.classList.remove('active');
     content.innerHTML = ' ';
 })
 
-
 addPost.addEventListener('click', function(){
     addPostOverlay.classList.add('act');
-})
+});
+
+
+
+function closeFormoverlay(event){
+    event.stopPropagation();
+    addPostOverlay.classList.remove('act');
+}
+
+addPostForm.addEventListener('submit', function(event){
+    event.preventDefault();
+    let inputvalue = {
+        title: event.target[0].value,
+        description: event.target[1].value
+    }
+
+    fetch('https://jsonplaceholder.typicode.com/posts',{
+        method: 'POST',
+        body: JSON.stringify(inputvalue),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+            addPostOverlay.classList.remove('act');
+            console.log(inputvalue);
+    })
+
+closeForm.addEventListener('click',closeFormoverlay);
+closeFormIcon.addEventListener('click',closeFormoverlay);
+saveForm.addEventListener('click',addNewPost);
+
+function addNewPost(){
+    let descrInput = document.querySelector('.descr-input');
+    let InputElement = document.querySelector('.title-input');
+    let inputvalue = InputElement.value;
+    let inputDescValue = descrInput.value;
+    let h2TitleTag = document.createElement('h2');
+    h2TitleTag.textContent = inputvalue;
+    let pDescrTag = document.createElement('p');
+    pDescrTag.textContent = inputDescValue;
+    let deleteButtonTag = document.createElement('button');
+    deleteButtonTag.classList.add('deleteButton');
+    deleteButtonTag.textContent = 'Delete Post';
+    deleteButtonTag.addEventListener('click', function(){
+        addFormDiv.remove();
+    })
+    addFormDiv.appendChild(h2TitleTag);
+    addFormDiv.appendChild(pDescrTag);
+    addFormDiv.appendChild(deleteButtonTag);
+    mainPost.appendChild(addFormDiv);
+    addFormDiv.classList.add('activeform');
+    InputElement.value.innerHTML = ' ';
+    descrInput.value.innerHTML = ' ';
+}
+
 
 
 
