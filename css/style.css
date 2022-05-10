@@ -7,6 +7,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    justify-content: center;
     margin: 25px auto;
     
     /* background-color: rgb(35, 125, 111);
@@ -28,6 +29,7 @@ body{
     border-radius: 7px;
     box-shadow: 5px 5px 10px grey;
     margin-bottom: 20px;
+    margin-left: 15px;
 }
 
 .overlay{

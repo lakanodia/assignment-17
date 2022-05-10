@@ -110,8 +110,6 @@ addPost.addEventListener('click', function(){
     addPostOverlay.classList.add('act');
 });
 
-
-
 function closeFormoverlay(event){
     event.stopPropagation();
     addPostOverlay.classList.remove('act');
@@ -142,6 +140,7 @@ closeFormIcon.addEventListener('click',closeFormoverlay);
 saveForm.addEventListener('click', addNewPost);
 
 function addNewPost(){
+    addFormDiv.innerHTML = ' ';
     let descrInput = document.querySelector('.descr-input');
     let InputElement = document.querySelector('.title-input');
     let inputvalue = InputElement.value;
@@ -161,8 +160,6 @@ function addNewPost(){
     addFormDiv.appendChild(deleteButtonTag);
     mainPost.appendChild(addFormDiv);
     addFormDiv.classList.add('activeform');
-    InputElement.value.innerHTML = ' ';
-    descrInput.value.innerHTML = ' ';
 }
 
 
