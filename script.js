@@ -139,7 +139,7 @@ addPostForm.addEventListener('submit', function(event){
 
 closeForm.addEventListener('click',closeFormoverlay);
 closeFormIcon.addEventListener('click',closeFormoverlay);
-saveForm.addEventListener('click',addNewPost);
+saveForm.addEventListener('click', addNewPost);
 
 function addNewPost(){
     let descrInput = document.querySelector('.descr-input');
