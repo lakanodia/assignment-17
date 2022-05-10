@@ -1,5 +1,6 @@
 body{
     font-family: 'Comfortaa';
+    background-color: rgb(255, 255, 255);
 }
 .Post-main-block{
     max-width: 1100px;
@@ -31,6 +32,12 @@ body{
     margin-bottom: 20px;
     margin-left: 15px;
 }
+.post-div:hover{
+    background-color:rgba(103, 126, 113, 0.793);
+    color: aliceblue;
+    font-weight: 900;
+
+}
 
 .overlay{
     position: fixed;
@@ -55,6 +62,7 @@ body{
     right: 3%;
     cursor: pointer;
 }
+
 .content{
     color: rgb(33, 62, 46);
 }
@@ -121,6 +129,15 @@ body{
     background-color: rgb(99, 133, 105);
     color: aliceblue;
 }
+.close-post:hover{
+    background-color: rgb(58, 82, 74);
+    color: aliceblue;  
+}
+.save-post:hover{
+    background-color: rgb(58, 82, 74);
+    color: aliceblue;
+}
+
 .form-div{
     width: 100%;
     margin-top: 15px;
@@ -147,6 +164,15 @@ body{
     display: none;
 
 }
+.addFormDiv:hover{
+    background-color:rgba(103, 126, 113, 0.793);
+    color: aliceblue;
+    font-weight: 900;
+}
 .addFormDiv.activeform{
     display: block;
+}
+.deleteButton:hover {
+    background-color: rgb(67, 81, 67);
+    color: aliceblue;
 }
