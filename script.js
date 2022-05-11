@@ -72,9 +72,9 @@ function renderPost(post){
         openOverlay(id);
         
     });
-    h3Tag.addEventListener('click', onTextClick)
+    h3Tag.addEventListener('click', onTextClick);
   
-    h2Tag.addEventListener('click', onTextClick)
+    h2Tag.addEventListener('click', onTextClick);
  
     function onTextClick(event) {
         event.stopPropagation();
@@ -91,6 +91,7 @@ function openOverlay(id){
         renderOverlay(data);
     });
 }
+
 function renderOverlay(item){
     let title = document.createElement('h2');
     title.classList.add('title');
@@ -139,7 +140,7 @@ addPostForm.addEventListener('submit', function(event){
 
 function afterPostSave(post){
     renderPost(post);
-    addPostOverlay.classList.remove('active');
+    addPostOverlay.classList.remove('active');   
 }
 
 closeForm.addEventListener('click', closeFormoverlay);
